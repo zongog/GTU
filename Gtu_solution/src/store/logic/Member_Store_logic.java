@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import domain.Member;
 import store.Member_Store;
 import store.mapper.MemberMapper;
+
 @Repository
 public class Member_Store_logic implements Member_Store{
 	
