@@ -1,4 +1,4 @@
-import org.junit.Before;
+/*import org.junit.Before;
 import org.junit.jupiter.api.Test;
 
 import domain.Member;
@@ -58,3 +58,4 @@ class Member_store_test {
 //	}
 
 }
+*/
