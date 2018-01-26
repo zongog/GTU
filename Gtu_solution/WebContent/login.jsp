@@ -53,7 +53,7 @@ body {
 			<span class="bar">| 
 			</span><a href="">PW찾기</a> 
 			<span class="bar">|
-			</span><a href="${pageContext.request.contextPath}/join.jsp">회원가입</a>
+			</span><a href="${pageContext.request.contextPath}/join.do">회원가입</a>
 	</div>
 	<br>
 </body>
