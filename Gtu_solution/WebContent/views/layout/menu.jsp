@@ -5,14 +5,14 @@
 <style>
 .navbar-brands {
     float: left;
-    padding: 10px 10px;
+    padding: 40px 1px;
     font-size: 16px;
     line-height: 11px;
 }
 
 .navbar-brandss {
     float: left;
-    padding: 10px 10px;
+    padding: 60px 10px;
     font-size: 16px;
     line-height: 11px;
 }
@@ -22,7 +22,7 @@
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-           	<img width=500 height="90" alt="VICS" src="resources/images/VICS.png"></a>
+           	<img width=500 height="80" alt="VICS" src="resources/images/VICS.png"></a>
         </div>
         	<h2 class="navbar-brands">${name }님 환영합니다.</h2>
             <a class="navbar-brandss" href="#"> [로그아웃]</a>

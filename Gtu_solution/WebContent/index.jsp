@@ -38,9 +38,6 @@ nav li a:hover {
     background: #f0f0f0;
 }
 
-
-
-
 nav li a:before {
     content: '';
     display: block;
@@ -51,6 +48,8 @@ nav li a:before {
     top: 0;
     background: #5bc0de;
 }</style>
+
+
 </head>
 <body>
 
@@ -67,10 +66,10 @@ nav li a:before {
 			<div class="row">
 				<div class="col-sm-12 col-lg-12">
 					<ul id="nav">
-									<li class="active"><a href="mypage.jsp">[공지사항]</a></li>
-									<li><a href="betStateList.do?userId=${userId }&state=대기">[질의서 관리]</a></li>
-									<li><a href="pointList.do">[QnA 게시판]</a></li>
-									<li><a href="userDeletepassword.jsp">[회원 관리]</a></li>
+									<li class="active"><a href="#">[공지사항]</a></li>
+									<li><a href="#">[질의서 관리]</a></li>
+									<li><a href="#">[QnA 게시판]</a></li>
+									<li><a href="#">[회원 관리]</a></li>
 					</ul>
 				</div>
 			</div>
