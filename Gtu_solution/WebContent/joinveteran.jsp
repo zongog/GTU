@@ -20,7 +20,7 @@ body {
 <body>
 
 
-	<h3>회원가입</h3>
+	<h3>VETERAN 회원가입</h3>
 	<br>
 	<form name= "form"action="join.do" method="post" >
 		<table class="table">
