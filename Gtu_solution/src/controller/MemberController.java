@@ -64,6 +64,19 @@ public class MemberController {
 		return "login.jsp";
 	}
 	
+	@RequestMapping("/joincpa.do")
+	public String showJoincpa() {
+		return "joincpa.jsp";
+	}
+	
+	@RequestMapping("/joinea.do")
+	public String showJoinea() {
+		return "joinea.jsp";
+	}
+	@RequestMapping("/joinveteran.do")
+	public String showJoinveteran() {
+		return "joinveteran.jsp";
+	}
 	@RequestMapping("/join.do")
 	public String showJoin() {
 		return "join.jsp";
