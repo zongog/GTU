@@ -14,19 +14,26 @@ public class Member_Store_logic implements Member_Store{
 	
 
 	@Override
-	public void create(Member member) {
+	public boolean create(Member member) {
 		
 		SqlSession session = Gtu_session_factory.getinstance().getSession();
+		boolean flag = false;
 		
 		try {
 			MemberMapper mapper = session.getMapper(MemberMapper.class);
-			mapper.create(member);
-			session.commit();
+			flag = mapper.create(member);
+			
+			if(flag == true) {
+				session.commit();
+			}else {
+				session.rollback();
+			}
+			return flag;
 		}finally {
 			session.close();
 		}
-		
 	}
+		
 
 	@Override
 	public void update(Member member) {
@@ -51,6 +58,20 @@ public class Member_Store_logic implements Member_Store{
 	@Override
 	public Void delete(String id) {
 		return null;
+	}
+	
+	@Override
+	public Member read(String id) {
+		
+		SqlSession session = Gtu_session_factory.getinstance().getSession();
+		Member user = null;
+		
+		try {
+			MemberMapper mapper = session.getMapper(MemberMapper.class);
+			user = mapper.read(id);
+		}finally {
+			session.close();
+		}return user;
 	}
 
 }

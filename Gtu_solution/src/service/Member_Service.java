@@ -5,7 +5,7 @@ import java.util.List;
 import domain.Member;
 
 public interface Member_Service {
-	void register(Member member);
+	boolean register(Member member);
 	void modify(Member member);
 	List<Member> searchall (String role);
 	List<Member> searchallbycheck(String check);

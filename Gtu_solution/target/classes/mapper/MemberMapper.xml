@@ -2,13 +2,18 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
-  <mapper namespace="store.mapper.MemberMapper">
-  
-  <insert id="create" parameterType="Member">
-  Insert into member_tb(mail, id, password, name, role, permission, attachment)
-  Values(#{mail},#{id},#{password},#{name},#{role},#{permission},#{attachment})
-  </insert>
-  
-  
-  </mapper>
+
+<mapper namespace="store.mapper.MemberMapper">
+
+	<insert id="create" parameterType="Member">
+		Insert into ea_tb(serial_number, mail, id, pw, name, role, permission,attachment)
+		Values(#{serial_number}, #{mail},#{id},#{pw},#{name},0,0,0)
+	</insert>
+
+	<select id="read" resultType="Member" parameterType="String">
+		SELECT serial_number, mail, id, pw, name, role, permission, attachment
+		FROM ea_tb
+		WHERE id = #{id}
+	</select>
+
+</mapper>

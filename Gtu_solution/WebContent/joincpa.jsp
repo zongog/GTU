@@ -22,17 +22,18 @@ body {
 
 	<h3>CPA 회원가입</h3>
 	<br>
-	<form name= "form"action="join.do" method="post" >
+	<form name= "form"action="joincpa.do" method="post" >
 		<table class="table">
 			<tr>
-				<th>Email</th>
-				<td><input id="loginId"  name="loginId" class="form-control" type="text" value="" placeholder="ID를 입력해주세요."> 
+				<th>ID</th>
+				<td><input id="id"  name="id" class="form-control" type="text" value="" placeholder="ID를 입력해주세요."> 
 				</td>
 				<td><input class="btn btn-success" type="submit" value="중복확인"></td>
 			</tr>
+			
 			<tr>
 				<th>Password</th>
-				<td><input id="password" name="password" class="form-control" type="password" value="" placeholder="비밀번호를 입력해주세요."></td>
+				<td><input id="pw" name="pw" class="form-control" type="password" value="" placeholder="비밀번호를 입력해주세요."></td>
 			</tr>
 						<tr>
 				<th>Password 확인</th>
@@ -42,6 +43,15 @@ body {
 				<th>Name</th>
 				<td><input id="name" name="name" class="form-control" type="text" value="" placeholder="이름을 입력해주세요."></td>
 			</tr>
+						<tr>
+				<th>Email</th>
+				<td><input id="mail" name="mail" class="form-control" type="text" value="" placeholder="이메일을 입력해주세요."></td>
+			</tr>
+			<tr>
+				<th>CPA 번호</th>
+				<td><input id="serial_number" name="serial_number" class="form-control" type="text" value="" placeholder="CPA번호를 입력해주세요."></td>
+			</tr>
+			
 						<tr>
 				<th>첨부파일</th>
 				<td>

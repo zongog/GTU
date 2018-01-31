@@ -15,13 +15,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
+
+import domain.Member;
 import service.Member_Service;
 
 @Controller
 public class MemberController {
-
 	
+	@Autowired
+	private Member_Service service;
+
 	@RequestMapping(value = "/mailSender")
 	public void mailSender(HttpServletRequest request, ModelMap mo) throws AddressException, MessagingException {
 		String host = "smtp.naver.com";
@@ -47,8 +52,7 @@ public class MemberController {
 			}
 		});
 		session.setDebug(true); // for debug
-		
-		
+
 		Message mimeMessage = new MimeMessage(session); // MimeMessage 생성
 		mimeMessage.setFrom(new InternetAddress("junpark25@naver.com")); // 발신자 셋팅 , 보내는 사람의 이메일주소를 한번 더
 		// 입력합니다. 이때는 이메일 풀 주소를 다 작성해주세요.
@@ -59,24 +63,39 @@ public class MemberController {
 		Transport.send(mimeMessage); // javax.mail.Transport.send() 이용
 
 	}
+
 	@RequestMapping("/")
 	public String showlogin() {
 		return "login.jsp";
 	}
-	
+
 	@RequestMapping("/joincpa.do")
 	public String showJoincpa() {
 		return "joincpa.jsp";
 	}
-	
+
+	@RequestMapping(value = "/joincpa.do", method = RequestMethod.POST)
+	public String showjoincpa(Member member) { // 같은 이름으로 매핑 다른이름일 경우 데이터만 안들어가고 에러는 안난다.
+
+		boolean registered = service.register(member);
+
+		if (!registered) {
+			return  "redirect:join.do";
+		}
+
+		return "login.jsp";
+	}
+
 	@RequestMapping("/joinea.do")
 	public String showJoinea() {
 		return "joinea.jsp";
 	}
+
 	@RequestMapping("/joinveteran.do")
 	public String showJoinveteran() {
 		return "joinveteran.jsp";
 	}
+
 	@RequestMapping("/join.do")
 	public String showJoin() {
 		return "join.jsp";

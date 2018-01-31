@@ -1,32 +1,37 @@
 package domain;
 
 public class Member {
-	private String id;
-	private String password;
+	int serial_number;
+	private String mail;
+	private String pw;
 	private String name;
 	private String role;
 	private String attachment;
 	private String permission;
-	private String mail;
-	
-	public Member() {
-		
+	private String id;
+
+	public int getSerial_number() {
+		return serial_number;
 	}
 
-	public String getId() {
-		return id;
+	public void setSerial_number(int serial_number) {
+		this.serial_number = serial_number;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public String getMail() {
+		return mail;
 	}
 
-	public String getPassword() {
-		return password;
+	public void setMail(String mail) {
+		this.mail = mail;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public String getPw() {
+		return pw;
+	}
+
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
 
 	public String getName() {
@@ -61,14 +66,12 @@ public class Member {
 		this.permission = permission;
 	}
 
-	public String getMail() {
-		return mail;
+	public String getId() {
+		return id;
 	}
 
-	public void setMail(String mail) {
-		this.mail = mail;
+	public void setId(String id) {
+		this.id = id;
 	}
-	
-	
-	
+
 }
