@@ -27,8 +27,8 @@ body {
 					<table border=0 width=300 height=20%>
 						<tr>
 
-							<td><input id="loginId" name="loginId" class="form-control"
-								type="text" value="" placeholder="이메일"></td>
+							<td><input id="id" name="id" class="form-control"
+								type="text" value="" placeholder="아이디"></td>
 						</tr>
 					</table>
 				</tr>
@@ -37,23 +37,36 @@ body {
 				<tr>
 					<table border=0 width=300 height=20%>
 						<tr>
-							<td><input id="password" name="password"
-								class="form-control" type="password" value=""
-								placeholder="비밀번호." style="ime-mode: disabled"></td>
+							<td><input id="pw" name="pw" class="form-control"
+								type="password" value="" placeholder="비밀번호."
+								style="ime-mode: disabled"></td>
 						</tr>
+
 					</table>
 				</tr>
 			</table>
-			</form>
+			<table border=0 width=900 height="20">
+				<tr>
+					<table border=0 width=300 height=20%>
+						<tr>
+							<td><select id="role" name="role" class="form-control">
+									<option value="CPA" selected>CPA
+									<option value="EA" selected>EA
+									<option value="Veteran" selected>Veteran</option>
+							</select></td>
+						</tr>
+
+					</table>
+				</tr>
+			</table>
 			<h3></h3>
 			<input class="btn btn-success" type="submit" value="로그인">
-			<h3></h3>
-			<h3></h3>
-			<a class="bar" href="">ID찾기</a> 
-			<span class="bar">| 
-			</span><a href="">PW찾기</a> 
-			<span class="bar">|
-			</span><a href="${pageContext.request.contextPath}/join.do">회원가입</a>
+		</form>
+		<h3></h3>
+		<h3></h3>
+		<a class="bar" href="">ID찾기</a> <span class="bar">| </span><a href="">PW찾기</a>
+		<span class="bar">| </span><a
+			href="${pageContext.request.contextPath}/join.do">회원가입</a>
 	</div>
 	<br>
 </body>

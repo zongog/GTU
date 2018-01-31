@@ -6,14 +6,67 @@
 <mapper namespace="store.mapper.MemberMapper">
 
 	<insert id="create" parameterType="Member">
-		Insert into ea_tb(serial_number, mail, id, pw, name, role, permission,attachment)
-		Values(#{serial_number}, #{mail},#{id},#{pw},#{name},0,0,0)
+
+		<if test="role == 'EA'">
+			Insert into ea_tb(serial_number,mail,id,pw,name,role,permission,attachment)
+			Values(#{serial_number},#{mail},#{id},#{pw},#{name},#{role},0,0)
+		</if>
+		<if test="role == 'CPA'">
+			Insert into
+			cpa_tb(serial_number,mail,id,pw,name,role,permission,attachment)
+			Values(#{serial_number},#{mail},#{id},#{pw},#{name},#{role},0,0)
+		</if>
+		<if test="role == 'VETERAN'">
+			Insert into
+			VETERAN_tb(serial_number,mail,id,pw,name,role,permission,attachment)
+			Values(#{serial_number},#{mail},#{id},#{pw},#{name},#{role},0,0)
+		</if>
+
 	</insert>
 
-	<select id="read" resultType="Member" parameterType="String">
-		SELECT serial_number, mail, id, pw, name, role, permission, attachment
-		FROM ea_tb
+	<select id="login" resultType="Member" parameterType="String">
+		<if test="role == 'EA'">
+			SELECT
+			serial_number, mail, id, pw, name, role, permission, attachment
+			FROM
+			ea_tb
+			WHERE id = #{id} and pw = #{pw}
+		</if>
+		<if test="role == 'CPA'">
+			SELECT
+			serial_number, mail, id, pw, name, role, permission, attachment
+			FROM
+			cpa_tb
+			WHERE id = #{id} and pw = #{pw}
+		</if>
+		<if test="role == 'Veteran'">
+			SELECT serial_number, mail, id, pw, name, role, permission, attachment
+			FROM veteran_tb
+			WHERE id = #{id} and pw = #{pw}
+		</if>
+	</select>
+
+	<select id="cparead" resultType="Member" parameterType="String">
+		SELECT
+		serial_number, mail, id, pw, name, role, permission, attachment
+		FROM
+		cpa_tb
 		WHERE id = #{id}
 	</select>
+	<select id="earead" resultType="Member" parameterType="String">
+		SELECT
+		serial_number, mail, id, pw, name, role, permission, attachment
+		FROM
+		ea_tb
+		WHERE id = #{id}
+	</select>
+	<select id="veteranread" resultType="Member" parameterType="String">
+		SELECT
+		serial_number, mail, id, pw, name, role, permission, attachment
+		FROM
+		veteran_tb
+		WHERE id = #{id}
+	</select>
+
 
 </mapper>

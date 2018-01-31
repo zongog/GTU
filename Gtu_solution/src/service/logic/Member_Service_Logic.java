@@ -49,6 +49,15 @@ public class Member_Service_Logic implements Member_Service {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public Member login(Member user) {
+		//
+		Member readedUser = null;
+		if (validate(user)) {
+			readedUser = store.login(user.getId(),user.getRole(),user.getPw());
+		}
+		return readedUser;
+	}
 
 	@Override
 	public Void remove(String id) {

@@ -12,5 +12,6 @@ public interface Member_Store {
 	Member findbymail(String mail);
 	Void delete(String id);
 	Member read(String id);
+	Member login(String id, String role, String pw);
 
 }

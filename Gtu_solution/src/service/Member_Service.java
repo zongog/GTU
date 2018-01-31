@@ -11,4 +11,5 @@ public interface Member_Service {
 	List<Member> searchallbycheck(String check);
 	Member searchbymail(String mail);
 	Void remove(String id);
+	Member login(Member member);
 }

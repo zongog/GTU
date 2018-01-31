@@ -10,6 +10,7 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -68,6 +69,11 @@ public class MemberController {
 	public String showlogin() {
 		return "login.jsp";
 	}
+	
+	@RequestMapping("/login.do")
+	public String showlogin2() {
+		return "login.jsp";
+	}
 
 	@RequestMapping("/joincpa.do")
 	public String showJoincpa() {
@@ -85,7 +91,20 @@ public class MemberController {
 
 		return "login.jsp";
 	}
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	public String login(Member member, HttpServletRequest req) {
 
+		Member loginedUser = service.login(member);
+
+		if (loginedUser != null) {
+			HttpSession session = req.getSession();
+			session.setAttribute("loginedUser", loginedUser);
+		} else {
+			HttpSession session = req.getSession();
+			session.invalidate();
+		}
+		return "index.jsp";
+	}
 	@RequestMapping("/joinea.do")
 	public String showJoinea() {
 		return "joinea.jsp";
