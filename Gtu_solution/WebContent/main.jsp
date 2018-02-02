@@ -35,7 +35,7 @@ nav li a {
 }
 
 nav li a:hover {
-    background: #f0f0f0;
+    background: #EEF7E9;
 }
 
 nav li a:before {

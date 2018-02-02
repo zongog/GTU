@@ -22,10 +22,10 @@
     <div class="container">
         <div class="navbar-header">
             <a class="navbar-brand" href="#">
-           	<img width=500 height="80" alt="VICS" src="resources/images/VICS.png"></a>
+           	<img width = "240" height = "80" src="resources/images/VICS.png"></a>
         </div>
         	<h2 class="navbar-brands">${loginedUser.name}님 환영합니다.</h2>
-            <a class="navbar-brandss" href="#"> [로그아웃]</a>
+            <a class="navbar-brandss" href="${pageContext.request.contextPath}/logout.do"> [로그아웃]</a>
             <a class="navbar-brandss" href="#">[정보수정]</a>
     </div>
     

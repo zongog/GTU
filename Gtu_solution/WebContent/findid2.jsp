@@ -5,40 +5,44 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>로그인</title>
+<title>아이디 찾기</title>
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="resources/css/style.css" rel="stylesheet">
 <style type="text/css">
 body {
-	padding: 5% 5%;
+	background: #EEF7E9;
 }
 
 body {
-	background: #EEF7E9;
+	padding: 5% 5%;
+}
+
+h1 {
+	font-weight: bold;
+	color: #999999;
+}
+
+h2 {
+	width: 3;
+	color: #A0B0DB;
 }
 </style>
 </head>
 <body>
+
 	<div align="center">
-		<img width=900 height="300" src="resources/img/aaa.PNG"> <br>
+		<br>
+			<span><img width=400 height="160"
+		src="resources/images/VICS.png"></span>
+		<h1>아이디 찾기</h1>
+
 		<form action="login.do" method="post">
 			<table border=0 width=900 height="20">
 				<tr>
 					<table border=0 width=300 height=20%>
 						<tr>
-
-							<td><input id="id" name="id" class="form-control"
-								type="text" value="" placeholder="아이디"></td>
-						</tr>
-					</table>
-				</tr>
-			</table>
-			<table border=0 width=900 height="20">
-				<tr>
-					<table border=0 width=300 height=20%>
-						<tr>
 							<td><input id="pw" name="pw" class="form-control"
-								type="password" value="" placeholder="비밀번호."
+								type="password" value="" placeholder="이름을 입력해주세요"
 								style="ime-mode: disabled"></td>
 						</tr>
 
@@ -49,24 +53,24 @@ body {
 				<tr>
 					<table border=0 width=300 height=20%>
 						<tr>
-							<td><select id="role" name="role" class="form-control">
-									<option value="CPA" selected>CPA
-									<option value="EA" selected>EA
-									<option value="Veteran" selected>Veteran</option>
-							</select></td>
-						</tr>
 
+							<td><input id="id" name="id" class="form-control"
+								type="text" value="" placeholder="가입하실 때 사용하신 이메일을 입력해주세요"></td>
+						</tr>
 					</table>
 				</tr>
+			</table>
+
+			</tr>
 			</table>
 			<h3></h3>
 			<input class="btn btn-success" type="submit" value="로그인">
 		</form>
+			<table border=0 width=0 height="100">
+			</table>
+				<h2>아이디 찾기를 위해 이메일로 본인확인을 진행해주세요</h2>
 		<h3></h3>
 		<h3></h3>
-		<a class="bar" href="${pageContext.request.contextPath}/findid.do">ID찾기</a> <span class="bar">| </span><a href="">PW찾기</a>
-		<span class="bar">| </span><a
-			href="${pageContext.request.contextPath}/join.do">회원가입</a>
 	</div>
 	<br>
 </body>
