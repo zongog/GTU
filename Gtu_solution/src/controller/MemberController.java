@@ -86,7 +86,6 @@ public class MemberController {
 		return "findid.jsp";
 	}
 
-
 	@RequestMapping("/joinea.do")
 	public String showJoinea() {
 		return "joinea.jsp";

@@ -28,6 +28,43 @@ h5 {
 </style>
 </head>
 <body>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+		integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+		crossorigin="anonymous"></script>
+	<!-- jquery를 사용하기위한 CDN주소 -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<script>
+		$(document).ready(function() {
+			//    alert('jquery test');
+			/* 입력폼 유효성 관련 요구사항
+			    1. 모든 폼은 공백 또는 "" 문자는 입력되면 안된다.
+			    2. 비밀번호는 4자이상 입력하여야 한다.
+			 */
+			 var a = Math.floor(Math.random()*(900000))+100000;
+			$('#mailsend').click(function() {
+				if($('#mail').val().length <1) {
+	                alert('이메일을 입력해주세요');}
+	                else{
+		                alert($('#mail').val() + '로 메일을 보냅니다');
+		                alert('안녕하세요 VICS입니다. 인증번호는 '+a+'입니다.');
+	                }
+	                });
+			
+			$('#submit').click(function() {
+				if($('#name').val().length <1) {
+	                alert('이름을 입력해주세요');}
+	                else if(a != $('#random').val()){
+		                alert('인증번호가 다릅니다.');
+	                }
+	                else   
+		                alert('인증번호가 같습니다.');
+	                    $('#addForm').submit();
+	                });
+		});
+	</script>
 
 	<div align="center">
 		<img width=912 height="250" src="resources/img/aaa.PNG">
@@ -35,7 +72,7 @@ h5 {
 		<h5>가입할 때 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</h5>
 		<table border=0 width=0 height="20">
 		</table>
-		<form action="findid.do" method="post">
+		<form action="findid.do" id="findid" method="post">
 			<table border=0 width=500 height="100">
 				<tr>
 					<td>이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
@@ -46,21 +83,19 @@ h5 {
 					<td>이메일 주소&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><input id="mail" name="mail" class="form-control"
 						type="text" value=""></td>
-					<td><input id="random" name="random" class="form-control"
-					value="" readonly="readonly"></td>
 					<td>&nbsp;&nbsp;&nbsp;</td>
-					<td><a
-				class="btn btn-default" href="${pageContext.request.contextPath}/mailsend">인증번호 받기</a></td>
+					<td><input class="btn btn-default" type="button" id="mailsend"
+						value="인증번호 받기"></td>
 				</tr>
 				<tr>
 					<td>인증 번호 &nbsp;&nbsp;&nbsp;&nbsp;</td>
-					<td><input id="id" name="id" class="form-control" type="text"
-						value="" placeholder="인증번호 6자리 입력"></td>
+					<td><input id="random" name="random" class="form-control"
+						type="text" value="" placeholder="인증번호 6자리 입력"></td>
 				</tr>
 			</table>
 			<table border=0 width=0 height="20">
 			</table>
-			<input class="btn btn-default" type="submit" value="다음">
+			<input class="btn btn-default" id="submit" type="button" value="다음" />
 		</form>
 		<table border=0 width=0 height="100">
 		</table>
