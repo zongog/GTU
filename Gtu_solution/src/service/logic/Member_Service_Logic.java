@@ -14,7 +14,7 @@ public class Member_Service_Logic implements Member_Service {
 
 	@Autowired
 	private Member_Store store;
-	
+
 	@Override
 	public boolean register(Member member) {
 		//
@@ -27,44 +27,15 @@ public class Member_Service_Logic implements Member_Service {
 	}
 
 	@Override
-	public void modify(Member member) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public List<Member> searchall(String role) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Member> searchallbycheck(String check) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Member searchbymail(String mail) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
 	public Member login(Member user) {
 		//
 		Member readedUser = null;
 		if (validate(user)) {
-			readedUser = store.login(user.getId(),user.getRole(),user.getPw());
+			readedUser = store.login(user.getId(), user.getRole(), user.getPw());
 		}
 		return readedUser;
 	}
 
-	@Override
-	public Void remove(String id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	private boolean validate(Member member) {
 		//
 		if (member == null) {
@@ -77,4 +48,18 @@ public class Member_Service_Logic implements Member_Service {
 		return true;
 	}
 
+	@Override
+	public List<Member> search(String name, String mail) {
+		return store.searchbymail(name, mail);
+	}
+	
+	@Override
+	public List<Member> findpw(String id, String name, String mail) {
+		return store.findpwbyemail(id, name, mail);
+	}
+
+	@Override
+	public Member findbyid(String id) {
+		return store.read(id);
+	}
 }

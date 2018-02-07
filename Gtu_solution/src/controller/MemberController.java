@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -8,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import domain.Member;
 import service.Member_Service;
@@ -59,7 +62,7 @@ public class MemberController {
 	public String login(Member member, HttpServletRequest req) {
 
 		Member loginedUser = service.login(member);
-
+		
 		if (loginedUser != null) {
 			HttpSession session = req.getSession();
 			session.setAttribute("loginedUser", loginedUser);
@@ -71,19 +74,56 @@ public class MemberController {
 
 		return "redirect:main";
 	}
+
+	@RequestMapping("/findbynamemail.do")
+	public ModelAndView searchByName(@RequestParam("username") String name, @RequestParam("usermail") String mail) {
+		List<Member> member = service.search(name, mail);
+		ModelAndView modelAndView = new ModelAndView("findid.jsp");
+		modelAndView.addObject("member", member);
+		return modelAndView;
+	}
 	
+	@RequestMapping("/findpwbyemail.do")
+	public ModelAndView searchpw(@RequestParam("userid") String id, @RequestParam("username") String name, @RequestParam("usermail") String mail) {
+		List<Member> member = service.findpw(id, name, mail);
+		ModelAndView modelAndView = new ModelAndView("findpw.jsp");
+		modelAndView.addObject("member", member);
+		return modelAndView;
+	}
+
+	@RequestMapping("/checkId.do")
+	public ModelAndView idcheck(@RequestParam("id") String id) {
+		System.out.println("id" + id);
+		Member member=null;
+		member = service.findbyid(id);
+		String idcheckment;
+		if (member == null) {
+			idcheckment = "사용 가능한 아이디 입니다.";
+		} else {
+			idcheckment = "이미 사용하고 있는 아이디입니다.";
+		}
+		ModelAndView modelAndView = new ModelAndView("checkId.jsp");
+		modelAndView.addObject("idcheckment", idcheckment);
+		return modelAndView;
+	}
+
 	@RequestMapping("/logout.do")
 	public String showlogout(HttpServletRequest req) {
 		HttpSession session = req.getSession();
 		session.invalidate();
 		return "redirect:login.do";
 	}
-	
+
 	@RequestMapping("/findid.do")
-	public String showfindid(HttpServletRequest req) {
-		HttpSession session = req.getSession();
-		session.invalidate();
+	public String showfindid() {
+		System.out.println("START");
 		return "findid.jsp";
+	}
+	
+	@RequestMapping("/findpw.do")
+	public String showfindpw() {
+		System.out.println("START");
+		return "findpw.jsp";
 	}
 
 	@RequestMapping("/joinea.do")

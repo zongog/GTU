@@ -64,7 +64,7 @@ body {
 		</form>
 		<h3></h3>
 		<h3></h3>
-		<a class="bar" href="${pageContext.request.contextPath}/findid.do">ID찾기</a> <span class="bar">| </span><a href="">PW찾기</a>
+		<a class="bar" href="${pageContext.request.contextPath}/findid.do">ID찾기</a> <span class="bar">| </span><a href="${pageContext.request.contextPath}/findpw.do">PW찾기</a>
 		<span class="bar">| </span><a
 			href="${pageContext.request.contextPath}/join.do">회원가입</a>
 	</div>

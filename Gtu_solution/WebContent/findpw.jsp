@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>아이디 찾기</title>
+<title>비밀번호 찾기</title>
 <link href="resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="resources/css/style.css" rel="stylesheet">
 <style type="text/css">
@@ -59,9 +59,9 @@ h5 {
 					alert('이름을 입력해주세요');
 				} else if (a != $('#random').val()) {
 					alert('인증번호가 다릅니다.');
-				} else {
+				} else{
 					alert('인증번호가 같습니다.');
-					document.getElementById('findidbyname').submit();
+				document.getElementById('findidbyname').submit();
 				}
 			});
 		});
@@ -73,14 +73,19 @@ h5 {
 		<h5>가입할 때 이메일 주소와 입력한 이메일 주소가 같아야, 인증번호를 받을 수 있습니다.</h5>
 		<table border=0 width=0 height="20">
 		</table>
-		<form action="${pageContext.request.contextPath}/findbynamemail.do"
-			id="findidbyname" target="_self" method="GET">
+		<form action="${pageContext.request.contextPath}/findpwbyemail.do" id="findidbyname" target="_self" method="GET">
 			<table border=0 width=500 height="100">
+												<tr>
+					<td>아이디&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+					<td><input id="id" name="userid" class="form-control"
+						type="text" value="junpark2525"></td>
+				</tr>
 				<tr>
 					<td>이름&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><input id="name" name="username" class="form-control"
 						type="text" value="박준현"></td>
 				</tr>
+
 				<tr>
 					<td>이메일 주소&nbsp;&nbsp;&nbsp;&nbsp;</td>
 					<td><input id="mail" name="usermail" class="form-control"
@@ -99,15 +104,10 @@ h5 {
 			</table>
 			<a class="btn btn-default" id="submitButton">다음</a>
 		</form>
-		<c:forEach items="${member}" var="member" varStatus="sts">
-			<tr>
-				<td><h5>귀하의 아이디는 ${member.id} Role은 ${member.role}입니다.</h5></td>
-			</tr>
-			<tr>
-				<td><a class="btn btn-default"
-					href="${pageContext.request.contextPath}/">로그인창으로</a>
-			</tr>
-		</c:forEach>
+						<c:forEach items="${member}" var="member" varStatus="sts">
+                            <tr><td><h5>귀하의 아이디는 ${member.id} Password는 ${member.pw}입니다.</h5></td></tr>
+                            <tr><td> <a class="btn btn-default" href="${pageContext.request.contextPath}/">로그인창으로</a></tr>
+                        </c:forEach>
 
 
 		<br>

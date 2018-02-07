@@ -21,27 +21,38 @@ body {
 <body>
 
 
+	<script>
+		var idCheck = function() {
+			var url = "checkId.do?id=" + form.id.value;
+			win = window.open(url, "idCheck",
+					"width=400, height=400, left=100, top=100");
+		}
+	</script>
+
 	<h3>CPA 회원가입</h3>
 	<br>
 	<form name="form" action="joincpa.do" method="post">
 		<table class="table">
 			<tr>
 				<th>ID</th>
+
 				<td><input id="id" name="id" class="form-control" type="text"
 					value="" placeholder="ID를 입력해주세요."></td>
-					<td><input id="role" name="role" class="form-control"
+				<td><input id="role" name="role" class="form-control"
 					type="hidden" value="CPA" readonly="readonly">
-				<td><input class="btn btn-success" type="submit" value="중복확인"></td>
+				<td><input class="btn btn-success" id="idcheck" type="button"
+					onclick="idCheck()" value="중복확인"></td>
 			</tr>
-
 			<tr>
 				<th>Password</th>
 				<td><input id="pw" name="pw" class="form-control"
 					type="password" value="" placeholder="비밀번호를 입력해주세요."></td>
+				<td><div id="passMsg" class="error"></div></td>
+
 			</tr>
 			<tr>
 				<th>Password 확인</th>
-				<td><input id="password" name="password" class="form-control"
+				<td><input id="repeatpw" name="repeatpw" class="form-control"
 					type="password" value="" placeholder="비밀번호 확인"></td>
 			</tr>
 			<tr>
@@ -63,16 +74,18 @@ body {
 
 			<tr>
 				<th>첨부파일</th>
-				<td><SCRIPT LANGUAGE="JavaScript">
+				<td><script>
 					function fileCheck(obj) {
 						document.getElementById('update_image_view').innerHTML = "<img src='" + obj + "'>";
 					}
-				</SCRIPT> <input type="file" name="file" onchange="fileCheck(this.value);">
+				</script> <input type="file" name="file" onchange="fileCheck(this.value);">
 					<table width="80" height="80">
 						<tr>
 							<td align="center" id='update_image_view'>미리보기</td>
 						</tr>
 					</table></td>
+
+
 			</tr>
 		</table>
 		<br>
