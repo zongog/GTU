@@ -57,4 +57,33 @@ public class NoticeStoreLogic implements NoticeStore{
 		
 		return notice;
 	}
+
+	@Override
+	public void deleteNotice(int id) {
+		
+		SqlSession session = Gtu_session_factory.getinstance().getSession();
+		
+		try {
+			NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+			mapper.deleteNotice(id);
+			session.commit();
+		}finally {
+			session.close();
+		}
+	}
+
+	@Override
+	public void updateNotice(Notice notice) {
+		
+		SqlSession session = Gtu_session_factory.getinstance().getSession();
+		
+		try {
+			NoticeMapper mapper = session.getMapper(NoticeMapper.class);
+			mapper.updateNotice(notice);
+			session.commit();
+		}finally {
+			session.close();
+		}
+		
+	}
 }

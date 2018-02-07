@@ -7,6 +7,8 @@
 	<properties resource="dataresource.properties" />
 	<typeAliases>
 		<typeAlias type="domain.Member" alias="Member"/>
+		<typeAlias type="domain.Notice" alias="Notice"/>
+		<typeAlias type="domain.QnA" alias="QnA"/>
 	</typeAliases>
 	
 	<environments default="development">
@@ -23,6 +25,8 @@
 	
 	<mappers>
 		<mapper resource="mapper/MemberMapper.xml"/>
+		<mapper resource="mapper/NoticeMapper.xml"/>
+		<mapper resource="mapper/QnAMapper.xml"/>
 	</mappers>
 	
 </configuration>

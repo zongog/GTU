@@ -22,18 +22,11 @@
 	<script src="resources/SBGrid/SBGrid_Lib.js" type="text/javascript"></script> 
 	<script src="resources/SBGrid/SBGrid_min.js" type="text/javascript"></script> 
 	
-
+	
 	<script type="text/javascript">
 	
-	
-		var gridData = [
-			
-			
-			['1', '1', '1111-11-11', '2', 'X'],
-			['1', '1', '1111-11-11', '2', 'X']
-
-			
-		];
+		
+		var grid_data = ${questionListJson};
 		
 		var datagrid; // 그리드를 담기위한 객체를 선언합니다.
 
@@ -46,7 +39,7 @@
 			var SBGridProperties = {}
 			SBGridProperties.parentid = 'SBGridArea';  // [필수] 그리드 영역의 div id 입니다.            
 			SBGridProperties.id = 'datagrid';          // [필수] 그리드를 담기위한 객체명과 동일하게 입력합니다.                
-			SBGridProperties.jsonref = 'gridData';    // [필수] 그리드의 데이터를 나타내기 위한 json data 객체명을 입력합니다.
+			SBGridProperties.jsonref = 'grid_data';    // [필수] 그리드의 데이터를 나타내기 위한 json data 객체명을 입력합니다.
 			SBGridProperties.emptyrecords = '데이터가 존재하지 않습니다.';
 			SBGridProperties.emptyrecordsfontstyle = "color:#004e3d; font-size:20px; font-weight bold;";
 			SBGridProperties.allowselection = false;
@@ -62,11 +55,11 @@
 
 			// [필수] 그리드의 컬럼을 입력합니다.  
 			SBGridProperties.columns = [
-				{caption : ['번호'],		ref : '0',		width : '80px',	  style : 'text-align:center',	type : 'output'},
-				{caption : ['제목'],		ref : '1',width : '700px',  style : 'text-align:center',	type : 'output'},
-				{caption : ['입사일'],	ref : '2',	width : '120px',	style : 'text-align:center',	type : 'inputdate', typeinfo : {locale : 'ko'} },
-				{caption : ['조회수'],	ref : '3',width : '130px',  style : 'text-align:center',	type : 'output'},
-				{caption : ['첨부파일'],	ref : '4',width : '130px',  style : 'text-align:center',	type : 'output'},
+				{caption : ['번호'],		ref : 'id',		width : '80px',	  style : 'text-align:center',	type : 'output'},
+				{caption : ['제목'],		ref : 'title',width : '700px',  style : 'text-align:center',	type : 'output'},
+				{caption : ['등록일'],	ref : 'n_date',		width : '200px',	style : 'text-align:center',	type : 'datepicker', typeinfo : {locale : 'ko' , dateformat :'yymmdd'}, format : {type:'date', rule:'yyyy-mm-dd', origin : 'yyyymmdd' }},
+				{caption : ['조회수'],	ref : 'hits',  width : '130px',  style : 'text-align:center',	type : 'output'},
+				{caption : ['첨부파일'],	ref : 'attachment',width : '130px',  style : 'text-align:center',	type : 'output'},
 				
 			];			
 			datagrid = _SBGrid.create(SBGridProperties); // 만들어진 SBGridProperties 객체를 파라메터로 전달합니다.
@@ -74,13 +67,10 @@
 		}
 		
 		function clickCellEvn(){
-			
 			location.href="noticedetail.do?id="+ datagrid.getRow();
-
-			
-		};	
+		};	 
 		
-	</script>	
+	</script>
 <SCRIPT>
 	function change(style) {
 
@@ -169,7 +159,7 @@ nav li a:before {
 					<ul id="nav">
 									<li class="active"><a href="noticAll.do">[공지사항]</a></li>
 									<li><a href="#">[질의서 관리]</a></li>
-									<li><a href="#">[QnA 게시판]</a></li>
+									<li><a href="findAllQnA.do">[QnA 게시판]</a></li>
 									<li><a href="#">[회원 관리]</a></li>
 					</ul>
 				</div>

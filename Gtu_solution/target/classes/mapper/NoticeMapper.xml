@@ -10,16 +10,27 @@
   <selectKey keyProperty="id" resultType="int" order="BEFORE">
 			select Notice_seq.nextval from dual
   </selectKey>
-  Insert into Notice_tb(id, title, content, hits, N_date, attachment)
+  Insert into Notice_tb(id, title, content, hits, n_date, attachment)
   Values(#{id}, #{title}, #{content}, 0, SYSDATE, #{attachment})
   </insert>
   
   <select id="findAll" resultType="Notice">
-  select id, title, content, hits, N_date, attachment from Notice_tb
+  select id, title, content, hits, n_date, attachment from Notice_tb
   </select>  
   
   <select id="findById" resultType="Notice" parameterType="int">
-  	select id, title, content, hits, N_date, attachment from Notice_tb where id = #{id}
+  	select id, title, content, hits, n_date, attachment from Notice_tb where id = #{id}
   </select>
+  
+  <delete id="deleteNotice" parameterType="int">
+  delete from Notice_tb where id = #{id}
+  </delete>
+  
+  <update id="updateNotice" parameterType="Notice">
+  update Notice_tb set title = #{title},
+  						content = #{content},
+  						hits = #{hits} where id=#{id}
+  
+  </update>
   
   </mapper>

@@ -31,7 +31,25 @@ public class NoticeServiceLogic implements NoticeService{
 
 	@Override
 	public Notice searchById(int id) {
-		return noticeStore.findById(id);
+		
+		Notice notice = noticeStore.findById(id);
+		
+		notice.setHits(notice.getHits() + 1);
+		noticeStore.updateNotice(notice);
+		
+		return notice;
+	}
+
+	@Override
+	public void removeNotice(int id) {
+		noticeStore.deleteNotice(id);
+		
+	}
+
+	@Override
+	public void modifyNotice(Notice notice) {
+		
+		noticeStore.updateNotice(notice);
 	}
 
 }

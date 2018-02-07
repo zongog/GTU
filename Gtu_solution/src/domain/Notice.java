@@ -7,9 +7,13 @@ public class Notice {
 	private int id;
 	private String title;
 	private String content;
-	private Date N_date;
+	private Date n_date;
 	private String attachment;
+	private int hits;
 	
+
+
+
 	public Notice() {}
 
 	public int getId() {
@@ -37,11 +41,11 @@ public class Notice {
 	}
 
 	public Date getN_date() {
-		return N_date;
+		return n_date;
 	}
 
 	public void setN_date(Date n_date) {
-		this.N_date = n_date;
+		this.n_date = n_date;
 	}
 
 	public String getAttachment() {
@@ -50,7 +54,15 @@ public class Notice {
 
 	public void setAttachment(String attachment) {
 		this.attachment = attachment;
-	};
+	}
+	
+	public int getHits() {
+		return hits;
+	}
+
+	public void setHits(int hits) {
+		this.hits = hits;
+	}
 	
 	
 

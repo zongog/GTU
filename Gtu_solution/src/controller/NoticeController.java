@@ -2,6 +2,8 @@ package controller;
 
 import java.util.List;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,16 +21,30 @@ public class NoticeController {
 	@RequestMapping("/noticewrite.do")
 	   public ModelAndView noticewrite(Notice notice) {
 		noticeService.RegistNotice(notice);
-		ModelAndView modelAndView = new ModelAndView("main.jsp");
+		ModelAndView modelAndView = new ModelAndView("noticAll.do");
 		return modelAndView;
 	}
 	
 	@RequestMapping("/noticAll.do")
 	   public ModelAndView noticView() {
-		List<Notice> list = noticeService.searchAll();
 		ModelAndView modelAndView = new ModelAndView("main.jsp");
-		modelAndView.addObject("list", list);
+		List<Notice> list = noticeService.searchAll();
 		
+		
+		JSONArray jArray = new JSONArray();
+		
+	    for (Notice notice : list)
+	    {
+	         JSONObject questionJSON = new JSONObject();
+	         questionJSON.put("id", notice.getId());
+	         questionJSON.put("title", notice.getTitle());
+	         questionJSON.put("hits", notice.getHits());
+	         questionJSON.put("n_date", notice.getN_date());
+	         questionJSON.put("attachment", notice.getAttachment());
+	         jArray.add(questionJSON);
+	    }
+	    
+	    modelAndView.addObject("questionListJson", jArray);
 		return modelAndView;
 	}
 	
@@ -37,11 +53,38 @@ public class NoticeController {
 		
 		Notice notice = noticeService.searchById(id);
 		
-		
 		ModelAndView modelAndView = new ModelAndView("noticedetail.jsp");
 		modelAndView.addObject("notice", notice);
 		
 		return modelAndView;
 	}
+	
+	@RequestMapping("/deletenotice.do")
+	   public ModelAndView deletenoticeView(int id) {
+		
+		noticeService.removeNotice(id);
+		ModelAndView modelAndView = new ModelAndView("noticAll.do");
+		return modelAndView;
+	}
+	
+	@RequestMapping("/modifynotice.do")
+	   public ModelAndView modifynotice(Notice notice, int id) {
+		
+		noticeService.modifyNotice(notice);
+		ModelAndView modelAndView = new ModelAndView("noticAll.do");
+		return modelAndView;
+	}
+
+	@RequestMapping("/findNoticeByid.do")
+	   public ModelAndView findNoticeByid(int id) {
+		
+		Notice notice = noticeService.searchById(id);
+		
+		ModelAndView modelAndView = new ModelAndView("noticmodify.jsp");
+		modelAndView.addObject("notice", notice);
+		return modelAndView;
+	}
+	
+	
 	
 }
