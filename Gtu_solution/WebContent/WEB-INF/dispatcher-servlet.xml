@@ -15,5 +15,4 @@
 	<context:component-scan base-package="service.logic"/>
 	<context:component-scan base-package="store.logic"/>
 	
-
 </beans>
